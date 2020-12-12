@@ -17,7 +17,6 @@ function Chat() {
   const user = useSelector(selectUser);
   let [input, setInput] = useState("");
   let [messages, setMessages] = useState([]);
-  const messagesRef = useRef();
 
   useEffect(() => {
     if (channel.channelId) {
@@ -36,10 +35,6 @@ function Chat() {
     }
   }, [channel]);
 
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
-
   const sendMessage = (e) => {
     e.preventDefault();
     db.collection("channels")
@@ -53,9 +48,11 @@ function Chat() {
     setInput("");
   };
 
-  const scrollToBottom = () => {
-    messagesRef.current.scrollIntoView();
-  };
+  useEffect(() => {
+    document.querySelector(
+      ".chat__messages"
+    ).scrollTop = document.querySelector(".chat__messages").scrollHeight;
+  }, [messages]);
 
   return (
     <div className="chat">
@@ -67,7 +64,6 @@ function Chat() {
         {messages.map((message) => {
           return <Message key={message.id} message={message} />;
         })}
-        <div ref={messagesRef} />
       </div>
 
       <div className="chat__input">

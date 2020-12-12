@@ -20,7 +20,7 @@ function Sidebar() {
   const user = useSelector(selectUser);
   let [channels, setChannels] = useState([]);
   let dispatch = useDispatch();
-  let firstChannelSet = false;
+  let [firstChannel, firstChannelSet] = useState(false);
 
   useEffect(() => {
     db.collection("channels")
@@ -36,8 +36,8 @@ function Sidebar() {
   }, []);
 
   useEffect(() => {
-    if (channels.length > 0 && !firstChannelSet) {
-      firstChannelSet = true;
+    if (channels.length > 0 && !firstChannel) {
+      firstChannelSet(true);
       dispatch(
         setChannel({
           channelId: channels[0].id,
