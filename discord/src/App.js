@@ -15,7 +15,6 @@ function App() {
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
       if (authUser) {
-        console.log(authUser);
         dispatch(
           login({
             uid: authUser.uid,
@@ -33,7 +32,6 @@ function App() {
 
   return (
     <div className="app">
-      <h1 onClick={() => auth.signOut()}>hi</h1>
       {user ? (
         <>
           <Sidebar />

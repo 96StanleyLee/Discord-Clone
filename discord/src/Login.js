@@ -10,7 +10,10 @@ function Login() {
   return (
     <div className="login">
       <div className="login__logo">
-        <img src="https://upload.wikimedia.org/wikipedia/sco/thumb/9/98/Discord_logo.svg/603px-Discord_logo.svg.png"></img>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/sco/thumb/9/98/Discord_logo.svg/603px-Discord_logo.svg.png"
+          alt="Discord"
+        ></img>
       </div>
       <button onClick={signIn}>Sign In</button>
     </div>

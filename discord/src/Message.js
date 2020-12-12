@@ -1,17 +1,23 @@
 import React from "react";
 import "./Message.css";
 import { Avatar } from "@material-ui/core";
+import moment from "moment-timezone";
 
-function Message() {
+function Message({ message }) {
+  let timeStamp = "";
+  if (message.messageData.timestamp !== null) {
+    timeStamp = moment(new Date(message.messageData.timestamp.toDate()));
+    timeStamp = timeStamp.tz("America/New_York").format("MM/DD/YYYY h:mm A");
+  }
   return (
     <div className="message">
-      <Avatar />
+      <Avatar src={message.messageData.user.photo} />
       <div className="message__info">
         <h4>
-          Name
-          <span className="message__timestamp"> This is a timestamp </span>
+          {message.messageData.user.displayName}
+          <span className="message__timestamp">{timeStamp}</span>
         </h4>
-        <p> This is a message </p>
+        <p> {message.messageData.message} </p>
       </div>
     </div>
   );
