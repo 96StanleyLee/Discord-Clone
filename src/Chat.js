@@ -12,6 +12,8 @@ import { selectUser } from "./features/userSlice";
 import db from "./firebase";
 import firebase from "firebase";
 
+let subscription;
+
 function Chat() {
   const channel = useSelector(selectChannel);
   const user = useSelector(selectUser);
@@ -19,8 +21,12 @@ function Chat() {
   let [messages, setMessages] = useState([]);
 
   useEffect(() => {
+    if (subscription) {
+      subscription();
+    }
     if (channel.channelId) {
-      db.collection("channels")
+      subscription = db
+        .collection("channels")
         .doc(channel.channelId)
         .collection("messages")
         .orderBy("timestamp")
