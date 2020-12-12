@@ -60,7 +60,7 @@ function Sidebar() {
   return (
     <div className="sidebar">
       <div className="sidebar__top">
-        <h3>Discord Test</h3>
+        <h3>Discord Clone</h3>
         <ExpandMoreIcon />
       </div>
 
