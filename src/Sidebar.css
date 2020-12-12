@@ -19,6 +19,7 @@
 .sidebar__channels {
   flex: 1;
   color: grey;
+  overflow: auto;
 }
 
 .sidebar__header {
