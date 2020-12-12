@@ -2,6 +2,7 @@
   display: flex;
   padding: 20px;
   align-items: center;
+  word-wrap: break-word;
 }
 
 .message__info {
@@ -16,5 +17,6 @@
 }
 
 .chat__messages {
-  overflow-y: auto;
+  overflow: auto;
+  word-break: break-word;
 }

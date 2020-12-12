@@ -14,25 +14,30 @@ import { selectUser } from "./features/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import db, { auth } from "./firebase";
 import { setChannel } from "./features/appSlice";
+import firebase from "firebase";
 
 function Sidebar() {
   const user = useSelector(selectUser);
   let [channels, setChannels] = useState([]);
   let dispatch = useDispatch();
+  let firstChannelSet = false;
 
   useEffect(() => {
-    db.collection("channels").onSnapshot((snapshot) => {
-      setChannels(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          channel: doc.data(),
-        }))
-      );
-    });
+    db.collection("channels")
+      .orderBy("timestamp")
+      .onSnapshot((snapshot) => {
+        setChannels(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            channel: doc.data(),
+          }))
+        );
+      });
   }, []);
 
   useEffect(() => {
-    if (channels.length > 0) {
+    if (channels.length > 0 && !firstChannelSet) {
+      firstChannelSet = true;
       dispatch(
         setChannel({
           channelId: channels[0].id,
@@ -46,6 +51,7 @@ function Sidebar() {
     const channelName = prompt("Enter a channel name");
     if (channelName) {
       db.collection("channels").add({
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         channelName: channelName,
       });
     }
