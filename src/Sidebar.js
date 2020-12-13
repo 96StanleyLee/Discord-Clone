@@ -92,12 +92,15 @@ function Sidebar() {
 
         <div className="sidebar__voiceIcons">
           <InfoOutlinedIcon />
-          <CallIcon />
+          <CallIcon
+            className="logout__button "
+            onClick={() => auth.signOut()}
+          />
         </div>
       </div>
 
       <div className="sidebar__profile">
-        <Avatar onClick={() => auth.signOut()} src={user.photo} />
+        <Avatar src={user.photo} />
         <div className="sidebar__profileInfo">
           <h3>{user.displayName}</h3>
           <p>{user.email}</p>

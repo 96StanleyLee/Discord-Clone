@@ -78,3 +78,8 @@
 .sidebar__profileIcons > .MuiSvgIcon-root {
   padding: 5px;
 }
+
+.logout__button:hover {
+  cursor: pointer;
+  color: red;
+}
