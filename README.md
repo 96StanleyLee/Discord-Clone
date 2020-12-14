@@ -28,5 +28,7 @@ As of right now, users can
 ## Libraries
 
 **Styling** Material-UI : https://github.com/mui-org/material-ui
+
 **Image Rendering Conditions** use-validate-image-url: https://www.npmjs.com/package/use-validate-image-url
+
 **Timezone Timestamps** moment-timezone: https://github.com/moment/moment-timezone
