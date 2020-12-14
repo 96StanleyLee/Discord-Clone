@@ -10,9 +10,14 @@
   background-color: #2f3135;
   color: grey;
   cursor: pointer;
+  margin-bottom: 2px;
 }
 
 .sidebarChannel__hash {
   font-size: 30px;
   padding: 8px;
+}
+
+.active {
+  background-color: #40464b !important;
 }
