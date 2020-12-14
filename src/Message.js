@@ -6,13 +6,15 @@ import { useValidateImageURL } from "use-validate-image-url";
 
 function Message({ message }) {
   let [status, setStatus] = useState("");
-
   let imageStatus = useValidateImageURL(message.messageData.message);
 
   useEffect(() => {
     if (imageStatus === "valid") {
       setStatus("valid");
     }
+    document.querySelector(
+      ".chat__messages"
+    ).scrollTop = document.querySelector(".chat__messages").scrollHeight;
   }, [imageStatus]);
 
   let timeStamp = "";

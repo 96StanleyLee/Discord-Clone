@@ -54,12 +54,6 @@ function Chat() {
     setInput("");
   };
 
-  useEffect(() => {
-    document.querySelector(
-      ".chat__messages"
-    ).scrollTop = document.querySelector(".chat__messages").scrollHeight;
-  }, [messages]);
-
   return (
     <div className="chat">
       <div className="chat__header">
